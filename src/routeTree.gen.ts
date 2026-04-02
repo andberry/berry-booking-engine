@@ -9,9 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as BerryRouteImport } from './routes/berry'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RoomsIndexRouteImport } from './routes/rooms/index'
+import { Route as RoomsRoomIdRouteImport } from './routes/rooms/$roomId'
+import { Route as RoomsCategoryIdSubcategoryIdRoomIdRouteImport } from './routes/rooms/$categoryId/$subcategoryId/$roomId'
 
+const BerryRoute = BerryRouteImport.update({
+  id: '/berry',
+  path: '/berry',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -22,35 +31,93 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoomsIndexRoute = RoomsIndexRouteImport.update({
+  id: '/rooms/',
+  path: '/rooms/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoomsRoomIdRoute = RoomsRoomIdRouteImport.update({
+  id: '/rooms/$roomId',
+  path: '/rooms/$roomId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoomsCategoryIdSubcategoryIdRoomIdRoute =
+  RoomsCategoryIdSubcategoryIdRoomIdRouteImport.update({
+    id: '/rooms/$categoryId/$subcategoryId/$roomId',
+    path: '/rooms/$categoryId/$subcategoryId/$roomId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/berry': typeof BerryRoute
+  '/rooms/$roomId': typeof RoomsRoomIdRoute
+  '/rooms/': typeof RoomsIndexRoute
+  '/rooms/$categoryId/$subcategoryId/$roomId': typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/berry': typeof BerryRoute
+  '/rooms/$roomId': typeof RoomsRoomIdRoute
+  '/rooms': typeof RoomsIndexRoute
+  '/rooms/$categoryId/$subcategoryId/$roomId': typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/berry': typeof BerryRoute
+  '/rooms/$roomId': typeof RoomsRoomIdRoute
+  '/rooms/': typeof RoomsIndexRoute
+  '/rooms/$categoryId/$subcategoryId/$roomId': typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/berry'
+    | '/rooms/$roomId'
+    | '/rooms/'
+    | '/rooms/$categoryId/$subcategoryId/$roomId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/berry'
+    | '/rooms/$roomId'
+    | '/rooms'
+    | '/rooms/$categoryId/$subcategoryId/$roomId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/berry'
+    | '/rooms/$roomId'
+    | '/rooms/'
+    | '/rooms/$categoryId/$subcategoryId/$roomId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BerryRoute: typeof BerryRoute
+  RoomsRoomIdRoute: typeof RoomsRoomIdRoute
+  RoomsIndexRoute: typeof RoomsIndexRoute
+  RoomsCategoryIdSubcategoryIdRoomIdRoute: typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/berry': {
+      id: '/berry'
+      path: '/berry'
+      fullPath: '/berry'
+      preLoaderRoute: typeof BerryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -65,12 +132,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rooms/': {
+      id: '/rooms/'
+      path: '/rooms'
+      fullPath: '/rooms/'
+      preLoaderRoute: typeof RoomsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rooms/$roomId': {
+      id: '/rooms/$roomId'
+      path: '/rooms/$roomId'
+      fullPath: '/rooms/$roomId'
+      preLoaderRoute: typeof RoomsRoomIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rooms/$categoryId/$subcategoryId/$roomId': {
+      id: '/rooms/$categoryId/$subcategoryId/$roomId'
+      path: '/rooms/$categoryId/$subcategoryId/$roomId'
+      fullPath: '/rooms/$categoryId/$subcategoryId/$roomId'
+      preLoaderRoute: typeof RoomsCategoryIdSubcategoryIdRoomIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BerryRoute: BerryRoute,
+  RoomsRoomIdRoute: RoomsRoomIdRoute,
+  RoomsIndexRoute: RoomsIndexRoute,
+  RoomsCategoryIdSubcategoryIdRoomIdRoute:
+    RoomsCategoryIdSubcategoryIdRoomIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

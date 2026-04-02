@@ -1,28 +1,26 @@
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
+import { createRootRoute, Outlet } from "@tanstack/react-router";
 
-import '../styles.css'
+import "../styles.css";
+import Footer from "#/components/Footer";
+import Header from "#/components/Header";
+
+const NotFound = () => (
+	<main className="w-full h-screen flex items-center justify-center text-center text-red-600 font-bold">
+		<div>404 - Not Found Error</div>
+	</main>
+);
 
 export const Route = createRootRoute({
-  component: RootComponent,
-})
+	component: RootComponent,
+	notFoundComponent: NotFound,
+});
 
 function RootComponent() {
-  return (
-    <>
-      <Outlet />
-      <TanStackDevtools
-        config={{
-          position: 'bottom-right',
-        }}
-        plugins={[
-          {
-            name: 'TanStack Router',
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-        ]}
-      />
-    </>
-  )
+	return (
+		<>
+			<Header />
+			<Outlet />
+			<Footer />
+		</>
+	);
 }
