@@ -3,6 +3,7 @@ import { createRootRoute, Outlet } from "@tanstack/react-router";
 import "../styles.css";
 import Footer from "#/components/Footer";
 import Header from "#/components/Header";
+import { Provider as ChakraUiProvider } from "#/components/ui/provider";
 
 const NotFound = () => (
 	<main className="w-full h-screen flex items-center justify-center text-center text-red-600 font-bold">
@@ -17,10 +18,10 @@ export const Route = createRootRoute({
 
 function RootComponent() {
 	return (
-		<>
+		<ChakraUiProvider>
 			<Header />
 			<Outlet />
 			<Footer />
-		</>
+		</ChakraUiProvider>
 	);
 }
