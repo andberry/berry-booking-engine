@@ -1,9 +1,9 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 
 import "../styles.css";
-import Footer from "#/components/Footer";
-import Header from "#/components/Header";
-import { Provider as ChakraUiProvider } from "#/components/ui/provider";
+import Footer from "#/components/layout/Footer";
+import Header from "#/components/layout/Header";
+import { Provider as ChakraUiProvider } from "#/components/misc/provider";
 
 const NotFound = () => (
 	<main className="w-full h-screen flex items-center justify-center text-center text-red-600 font-bold">
