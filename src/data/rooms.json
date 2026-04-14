@@ -1,0 +1,44 @@
+[
+	{
+		"id": "1",
+		"title": "Standard Room",
+		"description": "A cozy room with all the essentials for a comfortable stay.",
+		"imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800",
+		"ratePerNight": 89
+	},
+	{
+		"id": "2",
+		"title": "Deluxe Room",
+		"description": "Spacious room with a king-size bed and a stunning city view.",
+		"imageUrl": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800",
+		"ratePerNight": 139
+	},
+	{
+		"id": "3",
+		"title": "Superior Suite",
+		"description": "Elegant suite with a separate living area and premium amenities.",
+		"imageUrl": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+		"ratePerNight": 219
+	},
+	{
+		"id": "4",
+		"title": "Junior Suite",
+		"description": "A bright and airy suite with a private balcony overlooking the garden.",
+		"imageUrl": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800",
+		"ratePerNight": 179
+	},
+	{
+		"id": "5",
+		"title": "Penthouse Suite",
+		"description": "The pinnacle of luxury — panoramic views, a private terrace and butler service.",
+		"imageUrl": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
+		"ratePerNight": 499
+	},
+	{
+		"id": "6",
+		"title": "Family Room",
+		"description": "Generously sized room designed for families, with two queen beds and a play corner.",
+		"imageUrl": "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800",
+		"ratePerNight": 159
+	}
+]
