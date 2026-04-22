@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as DesignSystemRouteImport } from './routes/design-system'
 import { Route as BerryRouteImport } from './routes/berry'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -16,6 +17,11 @@ import { Route as RoomsIndexRouteImport } from './routes/rooms/index'
 import { Route as RoomsRoomIdRouteImport } from './routes/rooms/$roomId'
 import { Route as RoomsCategoryIdSubcategoryIdRoomIdRouteImport } from './routes/rooms/$categoryId/$subcategoryId/$roomId'
 
+const DesignSystemRoute = DesignSystemRouteImport.update({
+  id: '/design-system',
+  path: '/design-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BerryRoute = BerryRouteImport.update({
   id: '/berry',
   path: '/berry',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/berry': typeof BerryRoute
+  '/design-system': typeof DesignSystemRoute
   '/rooms/$roomId': typeof RoomsRoomIdRoute
   '/rooms/': typeof RoomsIndexRoute
   '/rooms/$categoryId/$subcategoryId/$roomId': typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/berry': typeof BerryRoute
+  '/design-system': typeof DesignSystemRoute
   '/rooms/$roomId': typeof RoomsRoomIdRoute
   '/rooms': typeof RoomsIndexRoute
   '/rooms/$categoryId/$subcategoryId/$roomId': typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/berry': typeof BerryRoute
+  '/design-system': typeof DesignSystemRoute
   '/rooms/$roomId': typeof RoomsRoomIdRoute
   '/rooms/': typeof RoomsIndexRoute
   '/rooms/$categoryId/$subcategoryId/$roomId': typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/berry'
+    | '/design-system'
     | '/rooms/$roomId'
     | '/rooms/'
     | '/rooms/$categoryId/$subcategoryId/$roomId'
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/berry'
+    | '/design-system'
     | '/rooms/$roomId'
     | '/rooms'
     | '/rooms/$categoryId/$subcategoryId/$roomId'
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/berry'
+    | '/design-system'
     | '/rooms/$roomId'
     | '/rooms/'
     | '/rooms/$categoryId/$subcategoryId/$roomId'
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BerryRoute: typeof BerryRoute
+  DesignSystemRoute: typeof DesignSystemRoute
   RoomsRoomIdRoute: typeof RoomsRoomIdRoute
   RoomsIndexRoute: typeof RoomsIndexRoute
   RoomsCategoryIdSubcategoryIdRoomIdRoute: typeof RoomsCategoryIdSubcategoryIdRoomIdRoute
@@ -111,6 +124,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/design-system': {
+      id: '/design-system'
+      path: '/design-system'
+      fullPath: '/design-system'
+      preLoaderRoute: typeof DesignSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/berry': {
       id: '/berry'
       path: '/berry'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BerryRoute: BerryRoute,
+  DesignSystemRoute: DesignSystemRoute,
   RoomsRoomIdRoute: RoomsRoomIdRoute,
   RoomsIndexRoute: RoomsIndexRoute,
   RoomsCategoryIdSubcategoryIdRoomIdRoute:
