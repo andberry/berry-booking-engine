@@ -4,7 +4,7 @@ import RoomCard from "#/components/RoomCard";
 import { getRooms } from "#/data/api/rooms";
 
 interface ISearchParams {
-	verbose: boolean;
+	verbose?: boolean;
 }
 
 const RoomsIndex = () => {
@@ -12,9 +12,9 @@ const RoomsIndex = () => {
 	const rooms = Route.useLoaderData();
 	return (
 		<main>
-			<Container maxW={"7xl"} borderColor={"black"} borderWidth={1}>
-				<Box as={"section"} my={12}>
-					<Heading size={"4xl"} mb={4}>
+			<Container maxW={"7xl"}>
+				<Box as={"section"} my={16}>
+					<Heading size={"4xl"} mb={6}>
 						Our Rooms
 					</Heading>
 
