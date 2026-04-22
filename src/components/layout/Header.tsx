@@ -1,7 +1,15 @@
-import { Badge, Box, Button, Container, HStack, IconButton } from "@chakra-ui/react";
+import {
+	Badge,
+	Box,
+	Button,
+	Container,
+	HStack,
+	IconButton,
+} from "@chakra-ui/react";
+import { Link } from "@tanstack/react-router";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { IoCart as ShoppingCartIcon } from "react-icons/io5";
 import CartDrawer from "#/components/CartDrawer";
 import { cartStore } from "#/stores/cartStore";
 
@@ -15,6 +23,7 @@ const links: ILink[] = [
 	{ url: "/about", title: "About" },
 	{ url: "/berry", title: "Berry" },
 	{ url: "/rooms", title: "Rooms" },
+	{ url: "/design-system", title: "Design System" },
 ];
 
 const Header = observer(function Header() {
@@ -22,7 +31,7 @@ const Header = observer(function Header() {
 
 	return (
 		<>
-			<Box as={"header"} bg={"black"} color={"lime"}>
+			<Box as={"header"} bg={"black"} color={"lime"} py={3}>
 				<Container px={4} fluid>
 					<HStack as={"nav"} gap={4} justify={"space-between"}>
 						<HStack gap={4}>
@@ -42,12 +51,13 @@ const Header = observer(function Header() {
 
 						<Box position={"relative"} display={"inline-flex"}>
 							<IconButton
-								variant={"ghost"}
-								colorPalette={"lime"}
+								variant={"plain"}
 								aria-label={"Open cart"}
 								onClick={() => setCartOpen(true)}
+								fill={"lime"}
+								color={"white"}
 							>
-								🛒
+								<ShoppingCartIcon />
 							</IconButton>
 							{cartStore.roomsNumber > 0 && (
 								<Badge

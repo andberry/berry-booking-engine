@@ -16,16 +16,28 @@ interface CartDrawerProps {
 	onClose: () => void;
 }
 
-const CartDrawer = observer(function CartDrawer({ open, onClose }: CartDrawerProps) {
+const CartDrawer = observer(function CartDrawer({
+	open,
+	onClose,
+}: CartDrawerProps) {
 	return (
-		<Drawer.Root open={open} onOpenChange={({ open }) => !open && onClose()} placement={"end"}>
-			<Drawer.Backdrop />
+		<Drawer.Root
+			open={open}
+			onOpenChange={({ open }) => !open && onClose()}
+			placement={"end"}
+			size={"sm"}
+		>
+			<Drawer.Backdrop bg={"black/70"} />
 			<Drawer.Positioner>
 				<Drawer.Content>
 					<Drawer.Header>
 						<Drawer.Title>Your cart</Drawer.Title>
 						<Drawer.CloseTrigger asChild>
-							<IconButton variant={"ghost"} size={"sm"} aria-label={"Close cart"}>
+							<IconButton
+								variant={"ghost"}
+								size={"sm"}
+								aria-label={"Close cart"}
+							>
 								✕
 							</IconButton>
 						</Drawer.CloseTrigger>
@@ -59,15 +71,27 @@ const CartDrawer = observer(function CartDrawer({ open, onClose }: CartDrawerPro
 					</Drawer.Body>
 
 					{cartStore.roomsNumber > 0 && (
-						<Drawer.Footer flexDirection={"column"} alignItems={"stretch"} gap={3}>
+						<Drawer.Footer
+							flexDirection={"column"}
+							alignItems={"stretch"}
+							gap={3}
+						>
 							<Separator />
-							<HStack justify={"space-between"}>
-								<Text fontWeight={"bold"}>Total</Text>
-								<Badge colorPalette={"green"} size={"lg"}>
-									${cartStore.total} / night
-								</Badge>
-							</HStack>
-							<Button colorPalette={"green"} width={"full"}>
+							<VStack gap={2} alignItems={"start"}>
+								<HStack justify={"space-between"} w={"full"}>
+									<Text fontWeight={"bold"}>Total per night</Text>
+									<Badge colorPalette={"green"} size={"lg"}>
+										${cartStore.total}
+									</Badge>
+								</HStack>
+								<HStack justify={"space-between"} w={"full"}>
+									<Text fontWeight={"bold"}>Average per night</Text>
+									<Badge colorPalette={"green"} size={"lg"}>
+										${cartStore.averagePerNight}
+									</Badge>
+								</HStack>
+							</VStack>
+							<Button colorPalette={"green"} width={"full"} mt={6}>
 								Book now
 							</Button>
 						</Drawer.Footer>

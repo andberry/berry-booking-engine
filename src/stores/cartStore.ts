@@ -9,6 +9,7 @@ class CartStore {
 			rooms: observable,
 			roomsNumber: computed,
 			total: computed,
+			averagePerNight: computed,
 		});
 	}
 
@@ -28,6 +29,10 @@ class CartStore {
 
 	get total() {
 		return this.rooms.reduce((sum, r) => sum + r.ratePerNight, 0);
+	}
+
+	get averagePerNight() {
+		return this.total / this.roomsNumber;
 	}
 }
 
