@@ -1,17 +1,11 @@
-import {
-	Badge,
-	Box,
-	Button,
-	Container,
-	HStack,
-	IconButton,
-} from "@chakra-ui/react";
-import { Link } from "@tanstack/react-router";
+import { Badge, Box, Container, HStack, IconButton } from "@chakra-ui/react";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { IoCart as ShoppingCartIcon } from "react-icons/io5";
 import CartDrawer from "#/components/CartDrawer";
 import { cartStore } from "#/stores/cartStore";
+import { RouterLink } from "../base/chakra-router-link-button";
+import { Logo } from "../base/logo";
 
 interface ILink {
 	url: string;
@@ -31,49 +25,47 @@ const Header = observer(function Header() {
 
 	return (
 		<>
-			<Box as={"header"} bg={"black"} color={"lime"} py={3}>
-				<Container px={4} fluid>
-					<HStack as={"nav"} gap={4} justify={"space-between"}>
-						<HStack gap={4}>
+			<Box as={"header"} bg={"bg"} py={3}>
+				<Container px={4} maxW={"breakpoint-xl"}>
+					<HStack gap={4} w={"full"} justify={"space-between"}>
+						<Logo />
+						<HStack gap={12} w={"full"} as={"nav"} justify={"flex-end"}>
 							{links.map((item) => (
-								<Button asChild key={item.url}>
-									<Link
-										to={item.url}
-										className="font-ubuntu px-4 py-2 inline-block transition-all duration-100 ease-linear hover:text-[springgreen] border border-[lime]"
-										activeProps={{ className: "text-[springgreen]" }}
-										inactiveProps={{ className: "text-white" }}
-									>
-										{item.title}
-									</Link>
-								</Button>
-							))}
-						</HStack>
-
-						<Box position={"relative"} display={"inline-flex"}>
-							<IconButton
-								variant={"plain"}
-								aria-label={"Open cart"}
-								onClick={() => setCartOpen(true)}
-								fill={"lime"}
-								color={"white"}
-							>
-								<ShoppingCartIcon />
-							</IconButton>
-							{cartStore.roomsNumber > 0 && (
-								<Badge
-									colorPalette={"green"}
-									position={"absolute"}
-									top={"-1"}
-									right={"-1"}
-									borderRadius={"full"}
-									fontSize={"xs"}
-									minW={4}
-									textAlign={"center"}
+								<RouterLink
+									key={item.url}
+									to={item.url}
+									color={"kachi.600"}
+									_hover={{ color: "beni.600" }}
+									_active={{ color: "beni.600", textDecoration: "underline" }}
 								>
-									{cartStore.roomsNumber}
-								</Badge>
-							)}
-						</Box>
+									{item.title}
+								</RouterLink>
+							))}
+
+							<Box position={"relative"} display={"inline-flex"}>
+								<IconButton
+									aria-label={"Open cart"}
+									onClick={() => setCartOpen(true)}
+									variant={"ghost"}
+								>
+									<ShoppingCartIcon />
+								</IconButton>
+								{cartStore.roomsNumber > 0 && (
+									<Badge
+										colorPalette={"green"}
+										position={"absolute"}
+										top={"-1"}
+										right={"-1"}
+										borderRadius={"full"}
+										fontSize={"xs"}
+										minW={4}
+										textAlign={"center"}
+									>
+										{cartStore.roomsNumber}
+									</Badge>
+								)}
+							</Box>
+						</HStack>
 					</HStack>
 				</Container>
 			</Box>
