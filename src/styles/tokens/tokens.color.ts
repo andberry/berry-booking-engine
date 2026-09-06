@@ -1,5 +1,7 @@
 export const colorTokens = {
+	// primary color
 	kachi: {
+		DEFAULT: { value: "#23395B" }, // 600
 		50: { value: "#F1F4F9" },
 		100: { value: "#DEE7F2" },
 		200: { value: "#BED0E5" },
@@ -12,8 +14,9 @@ export const colorTokens = {
 		900: { value: "#101929" },
 		950: { value: "#0A101B" },
 	},
-	// 紅 beni — scarcity and destructive only.
+	// accent color
 	beni: {
+		DEFAULT: { value: "#B8324A" }, // 600
 		50: { value: "#FDF2F4" },
 		100: { value: "#FBE0E5" },
 		200: { value: "#F5C0CA" },
@@ -26,8 +29,9 @@ export const colorTokens = {
 		900: { value: "#5A1723" },
 		950: { value: "#3A0E17" },
 	},
-	// 抹茶 matcha — available, confirmed, savings.
+	// state color: available, confirmed, savings.
 	matcha: {
+		DEFAULT: { value: "#5A7A49" }, // 600
 		50: { value: "#F3F6F0" },
 		100: { value: "#E3EBDD" },
 		200: { value: "#C6D6BC" },
@@ -40,8 +44,9 @@ export const colorTokens = {
 		900: { value: "#2A3A23" },
 		950: { value: "#1A2416" },
 	},
-	// 琥珀 kohaku — limited availability, warnings.
+	// state color: limited availability, warnings.
 	kohaku: {
+		DEFAULT: { value: "#A8761F" }, // 600
 		50: { value: "#FBF6EC" },
 		100: { value: "#F6EAD1" },
 		200: { value: "#EBD3A2" },
@@ -54,8 +59,9 @@ export const colorTokens = {
 		900: { value: "#4C340F" },
 		950: { value: "#2F2009" },
 	},
-	// 水 mizu — informational, and the focus ring system-wide.
+	// state color: informational, and the focus ring system-wide.
 	mizu: {
+		DEFAULT: { value: "#3F7F99" }, // 600
 		50: { value: "#F0F7FA" },
 		100: { value: "#DAEDF3" },
 		200: { value: "#B0D8E4" },
@@ -68,8 +74,9 @@ export const colorTokens = {
 		900: { value: "#1E3B46" },
 		950: { value: "#13252C" },
 	},
-	// 鼠 nezumi — neutrals. Warm washi at the light end, cool sumi at the dark.
+	// neutral color: Warm washi at the light end, cool sumi at the dark.
 	nezumi: {
+		DEFAULT: { value: "#4A5058" }, // 600
 		50: { value: "#FBFAF7" }, // washi — light panel
 		100: { value: "#F2F1EC" }, // 生成り kinari — light canvas
 		150: { value: "#D3D7DC" },
@@ -84,6 +91,7 @@ export const colorTokens = {
 		900: { value: "#171B21" }, // dark panel
 		950: { value: "#111419" }, // dark canvas
 	},
+	// neutral colors
 	sumi: { value: "#171A1F" }, // 墨 ink stick — light-mode text
 	gofun: { value: "#ECEBE4" }, // 胡粉 shell white — dark-mode text
 };

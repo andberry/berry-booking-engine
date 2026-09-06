@@ -1,5 +1,17 @@
+const createAliasColor = (name: string) =>
+	Object.fromEntries(
+		[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((step) => [
+			step,
+			{ value: `{colors.${name}.${step}}` },
+		]),
+	);
+
 export const semanticTokens = {
 	colors: {
+		// aliases
+		primary: createAliasColor("kachi"),
+		accent: createAliasColor("beni"),
+
 		bg: {
 			DEFAULT: {
 				value: { base: "{colors.nezumi.100}", _dark: "{colors.nezumi.950}" },
