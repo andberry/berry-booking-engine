@@ -1,11 +1,18 @@
-import { Badge, Box, Container, HStack, IconButton } from "@chakra-ui/react";
+import {
+	Badge,
+	Box,
+	Container,
+	HStack,
+	IconButton,
+	Image,
+} from "@chakra-ui/react";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { IoCart as ShoppingCartIcon } from "react-icons/io5";
 import CartDrawer from "#/components/CartDrawer";
 import { cartStore } from "#/stores/cartStore";
+import LogoSvg from "../../assets/logo.svg";
 import { RouterLink } from "../base/chakra-router-link-button";
-import { Logo } from "../base/logo";
 
 interface ILink {
 	url: string;
@@ -26,17 +33,27 @@ const Header = observer(function Header() {
 	return (
 		<>
 			<Box as={"header"} bg={"bg"} py={3}>
-				<Container px={4} maxW={"breakpoint-xl"}>
-					<HStack gap={4} w={"full"} justify={"space-between"}>
-						<Logo />
+				<Container maxW={"breakpoint-xl"}>
+					<HStack
+						gap={4}
+						w={"full"}
+						justify={"space-between"}
+						alignItems={"center"}
+					>
+						<Image
+							src={LogoSvg}
+							alt="Berry Stay Loog"
+							height={"24px"}
+							position={"relative"}
+							top={"2px"}
+						/>
 						<HStack gap={12} w={"full"} as={"nav"} justify={"flex-end"}>
 							{links.map((item) => (
 								<RouterLink
 									key={item.url}
 									to={item.url}
-									color={"kachi.600"}
-									_hover={{ color: "beni.600" }}
-									_active={{ color: "beni.600", textDecoration: "underline" }}
+									activeProps={{ textDecoration: "underline" }}
+									px={1}
 								>
 									{item.title}
 								</RouterLink>
