@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Box, Container, Heading } from "@chakra-ui/react";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({ component: App });
@@ -6,11 +6,13 @@ export const Route = createFileRoute("/")({ component: App });
 function App() {
 	return (
 		<main>
-			<section>
-				<Container>
-					<h1 className="font-mw mb-3 text-4xl font-bold">This is homepage</h1>
+			<Box as="section" py={16}>
+				<Container maxW={"breakpoint-xl"}>
+					<Heading textStyle={"heading"} as={"h1"} fontSize={"5xl"}>
+						This is homepage
+					</Heading>
 				</Container>
-			</section>
+			</Box>
 		</main>
 	);
 }

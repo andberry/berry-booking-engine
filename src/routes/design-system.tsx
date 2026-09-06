@@ -212,7 +212,7 @@ function Mono(props: React.ComponentProps<typeof Text>) {
 
 function DesignSystemPage() {
 	return (
-		<Container maxW="5xl" py={16}>
+		<Container maxW="breakpoint-xl" py={16}>
 			<Text textStyle="display" mb={3}>
 				Design System
 			</Text>
@@ -544,7 +544,12 @@ function DesignSystemPage() {
 
 			{/* ---------------------------------------------------------- */}
 			<Section title="Breakpoints">
-				<Stack gap={0} borderWidth="1px" borderColor="border.subtle" borderRadius="md">
+				<Stack
+					gap={0}
+					borderWidth="1px"
+					borderColor="border.subtle"
+					borderRadius="md"
+				>
 					{breakpoints.map(([name, width], i) => (
 						<HStack
 							key={name}
