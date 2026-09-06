@@ -1,4 +1,9 @@
-import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
+import {
+	createSystem,
+	defaultConfig,
+	defineConfig,
+	defineRecipe,
+} from "@chakra-ui/react";
 import { textStyles } from "./textStyles";
 import { colorTokens } from "./tokens/tokens.color";
 import { fontsTokens } from "./tokens/tokens.fonts";
@@ -63,8 +68,16 @@ const themeConfig = defineConfig({
 		semanticTokens: semanticTokens,
 		textStyles: textStyles,
 
-		// buttons recipes at minimum
-		recipes: {},
+		recipes: {
+			// overriding stock link recipe
+			link: defineRecipe({
+				base: {
+					focusRing: "none",
+					focusVisibleRing: "outside",
+					_hover: { textDecoration: "underline" },
+				},
+			}),
+		},
 	},
 });
 
