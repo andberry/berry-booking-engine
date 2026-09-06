@@ -74,7 +74,20 @@ const themeConfig = defineConfig({
 				base: {
 					focusRing: "none",
 					focusVisibleRing: "outside",
-					_hover: { textDecoration: "underline" },
+					textUnderlineOffset: "6px",
+				},
+				/* Stock link ships variants.variant.{plain,underline} and defaults to
+				   plain. Variants resolve after base, so underline offsets have to be
+				   overridden here — setting them in base gets beaten by the variant. */
+				variants: {
+					variant: {
+						plain: {
+							_hover: { textUnderlineOffset: "6px" },
+						},
+						underline: {
+							textUnderlineOffset: "6px",
+						},
+					},
 				},
 			}),
 		},
