@@ -1,10 +1,14 @@
-const createAliasColor = (name: string) =>
-	Object.fromEntries(
+const createAliasColor = (name: string) => {
+	const alias = Object.fromEntries(
 		[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((step) => [
 			step,
 			{ value: `{colors.${name}.${step}}` },
 		]),
 	);
+	alias.DEFAULT = { value: `{colors.${name}}` };
+	console.log("alias: ", alias);
+	return alias;
+};
 
 export const semanticTokens = {
 	colors: {
